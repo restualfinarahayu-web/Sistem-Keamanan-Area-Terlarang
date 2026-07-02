@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "author": "Restu Alfina Rahayu",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 115.2, "left": -14.36, "attrs": {} },
+    { "type": "wokwi-pir-motion-sensor", "id": "pir1", "top": -5.6, "left": 155.82, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -22.8,
+      "left": -159.4,
+      "attrs": { "color": "limegreen" }
+    },
+    { "type": "wokwi-led", "id": "led2", "top": -22.8, "left": -73, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 62.4,
+      "left": -77.35,
+      "rotate": 90,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 62.4,
+      "left": -163.75,
+      "rotate": 90,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 156,
+      "left": 174.6,
+      "attrs": { "volume": "0.1" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "pir1:VCC", "esp:3V3", "red", [ "v19.2", "h-201.6" ] ],
+    [ "pir1:OUT", "esp:13", "yellow", [ "v28.8", "h-240.14", "v163.2", "h9.6" ] ],
+    [ "pir1:GND", "esp:GND.2", "black", [ "v57.6", "h-0.26" ] ],
+    [ "led1:A", "r2:1", "gray", [ "v0" ] ],
+    [ "led2:A", "r1:1", "gray", [ "v0" ] ],
+    [ "r2:2", "esp:GND.1", "black", [ "h0", "v171.6" ] ],
+    [ "r1:2", "esp:GND.1", "black", [ "h0", "v171.6" ] ],
+    [ "bz1:1", "esp:GND.2", "black", [ "v0", "h-96", "v-96" ] ],
+    [ "bz1:2", "esp:25", "violet", [ "v96", "h-240.4", "v-124.8" ] ],
+    [ "led2:C", "esp:27", "green", [ "v220.8", "h0.4" ] ],
+    [ "led1:C", "esp:26", "green", [ "v211.2", "h0.4" ] ]
+  ],
+  "dependencies": {}
+}
